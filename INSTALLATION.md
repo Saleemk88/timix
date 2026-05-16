@@ -82,10 +82,11 @@ Once the containers are running, you can access the applications at the followin
 
 ## Production Deployment
 
-For production deployment, you should:
+A production-ready Docker Compose file (`docker-compose.prod.yml`) is provided. This setup uses a multi-stage `Dockerfile` to build the frontend and backend into a single image, and includes an Nginx reverse proxy.
 
-1.  Use a robust reverse proxy (like Nginx or Traefik) to handle HTTPS and route traffic to the frontend and backend containers.
-2.  Build the frontend for production (static files) and serve them using Nginx rather than the Vite dev server.
-3.  Ensure strong, unique passwords are used for the database and secrets.
-4.  Use a managed database service (like AWS RDS or Google Cloud SQL) instead of a Docker container for the database for better reliability and backups.
-5.  Set `NODE_ENV=production` for the backend.
+1.  **Configure Environment**: Update the database credentials and secrets in `docker-compose.prod.yml` before deploying.
+2.  **Build and Run**: Use the production compose file to build and start the containers:
+    ```bash
+    docker-compose -f docker-compose.prod.yml up --build -d
+    ```
+3.  **Access the Application**: By default, the Nginx reverse proxy is configured to listen on port `8080`. You can access the application by navigating to `http://YOUR_SERVER_IP:8080` in your web browser.

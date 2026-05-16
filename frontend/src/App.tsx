@@ -4,7 +4,7 @@ function App() {
   const [backendStatus, setBackendStatus] = useState<string>('Checking...')
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/health')
+    fetch('/api/health')
       .then(res => res.json())
       .then(data => setBackendStatus(data.status))
       .catch(err => {
