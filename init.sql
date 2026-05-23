@@ -37,6 +37,5 @@ CREATE TABLE IF NOT EXISTS absence_requests (
 -- Using a simple hash for demonstration purposes. In production, use bcrypt via backend.
 -- $2b$10$xyz... is a placeholder for a bcrypt hash of 'admin'
 INSERT INTO users (username, email, password_hash, role)
-INSERT INTO users (username, email, password_hash, role)
 VALUES ('admin', 'admin@timix.local', '$2b$10$Ep3/m2sLOfM8x3dK/oI9eeP9bQpEa4b/Z/H9E3G/tY9u9x9b9x9b9', 'admin')
 ON CONFLICT (username) DO NOTHING;
